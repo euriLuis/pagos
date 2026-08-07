@@ -21,17 +21,17 @@ const report = buildReport([
 ], 100, new Date(2026, 7, 4), new Date(2026, 7, 11));
 equal(report.opening, 100); equal(report.deposits, 20); equal(report.withdrawals, 5); equal(report.closing, 115);
 const text = formatReportText('Fondo', 'USDT', 'Día: 04 ago 2026', report);
-equal(text.includes('Balance inicial del día: 100,000 USDT'), true);
-equal(text.includes('Total en fondo: 115,000 USDT'), true);
+equal(text.includes('Balance inicial del día: 100.000 USDT'), true);
+equal(text.includes('Total en fondo: 115.000 USDT'), true);
 const grouped = buildReport([
   { id: 3, profileId: 1, kind: 'withdrawal_cup', inputAmount: 50000, balanceAmount: -50, rate: 1000, note: '', createdAt: new Date(2026, 7, 5, 11).toISOString() },
   { id: 4, profileId: 1, kind: 'withdrawal_cup', inputAmount: 25000, balanceAmount: -25, rate: 1000, note: '', createdAt: new Date(2026, 7, 5, 12).toISOString() },
   { id: 5, profileId: 1, kind: 'withdrawal_direct', inputAmount: 10, balanceAmount: -10, rate: null, note: 'Zelle', createdAt: new Date(2026, 7, 5, 13).toISOString() },
 ], 200, new Date(2026, 7, 5), new Date(2026, 7, 6));
 const groupedText = formatReportText('Fondo', 'USDT', 'Corte: 05/08/2026, 10:00', grouped);
-equal(groupedText.includes('50.000 CUP + 25.000 CUP = 75.000 CUP'), true);
-equal(groupedText.includes('50.000 CUP ÷ 1000 = 50,000 USDT'), true);
-equal(groupedText.includes('Total convertido: −75,000 USDT'), true);
+equal(groupedText.includes('50,000 CUP + 25,000 CUP = 75,000 CUP'), true);
+equal(groupedText.includes('50,000 CUP ÷ 1000 = 50.000 USDT'), true);
+equal(groupedText.includes('Total convertido: −75.000 USDT'), true);
 equal(groupedText.includes('Directos · conversión 1×1'), true);
-equal(groupedText.includes('Total retiros: −85,000 USDT'), true);
+equal(groupedText.includes('Total retiros: −85.000 USDT'), true);
 console.log('accounting.test: ok');

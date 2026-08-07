@@ -27,7 +27,7 @@ export function buildReport(movements: Movement[], initialBalance: number, start
   return { included, opening: before, deposits, withdrawals, cupWithdrawn, directWithdrawn, closing: before + deposits - withdrawals };
 }
 
-const amount = (value: number, currency: string) => `${Math.abs(value).toLocaleString('es-ES', { minimumFractionDigits: currency === 'USDT' ? 3 : 0, maximumFractionDigits: currency === 'USDT' ? 3 : 0 })} ${currency}`;
+const amount = (value: number, currency: string) => `${Math.abs(value).toLocaleString('en-US', { minimumFractionDigits: currency === 'USDT' ? 3 : 0, maximumFractionDigits: currency === 'USDT' ? 3 : 0 })} ${currency}`;
 
 export function formatReportText(profileName: string, currency: string, periodLabel: string, report: ReturnType<typeof buildReport>) {
   const openingLabel = periodLabel.startsWith('Día') ? 'Balance inicial del día' : periodLabel.startsWith('Semana') ? 'Balance inicial de la semana' : periodLabel.startsWith('Mes') ? 'Balance inicial del mes' : 'Balance inicial del corte';

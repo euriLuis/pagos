@@ -2,7 +2,7 @@
   "expo": {
     "name": "Cuentas",
     "slug": "cuentas-negocio",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "icon": "./assets/iconography/app-icon.png",
     "splash": {
       "image": "./assets/iconography/splash-icon.png",
@@ -17,7 +17,7 @@
     },
     "android": {
       "package": "com.euridev.cuentasnegocio",
-      "versionCode": 3,
+      "versionCode": 4,
       "icon": "./assets/iconography/app-icon.png",
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
