@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useAccounts } from '../context/AccountsContext';
 import { addMovement, getRates } from '../data/database';
@@ -10,7 +11,7 @@ type Mode = 'deposit' | 'withdrawal_cup' | 'withdrawal_direct';
 const defaults: Rates = { under50: 0, from50: 0, from100: 0, from500: 0 };
 export function MovementsScreen() {
   const { selected, balance, refresh } = useAccounts(); const [mode, setMode] = useState<Mode>('deposit'); const [amount, setAmount] = useState(''); const [note, setNote] = useState(''); const [rates, setRates] = useState(defaults); const [saving, setSaving] = useState(false);
-  useEffect(() => { void getRates().then(setRates); }, []);
+  useFocusEffect(useCallback(() => { void getRates().then(setRates); }, []));
   useEffect(() => { setMode(selected?.currency === 'USDT' ? 'withdrawal_cup' : 'withdrawal_direct'); setAmount(''); setNote(''); }, [selected?.id, selected?.currency]);
   const value = Number(amount.replace(',', '.'));
   let preview = ''; let chosenRate = 0;

@@ -30,6 +30,8 @@ const grouped = buildReport([
 ], 200, new Date(2026, 7, 5), new Date(2026, 7, 6));
 const groupedText = formatReportText('Fondo', 'USDT', 'Corte: 05/08/2026, 10:00', grouped);
 equal(groupedText.includes('50.000 CUP + 25.000 CUP = 75.000 CUP'), true);
+equal(groupedText.includes('50.000 CUP ÷ 1000 = 50,000 USDT'), true);
+equal(groupedText.includes('Total convertido: −75,000 USDT'), true);
 equal(groupedText.includes('Directos · conversión 1×1'), true);
 equal(groupedText.includes('Total retiros: −85,000 USDT'), true);
 console.log('accounting.test: ok');

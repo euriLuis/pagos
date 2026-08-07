@@ -42,7 +42,8 @@ export function formatReportText(profileName: string, currency: string, periodLa
   rates.forEach((items, rate) => {
     const cupTotal = items.reduce((sum, x) => sum + x.inputAmount, 0);
     const usdtTotal = items.reduce((sum, x) => sum + Math.abs(x.balanceAmount), 0);
-    sections.push(`Retiros CUP · tasa ${rate}\n${items.map(x => amount(x.inputAmount, 'CUP')).join(' + ')} = ${amount(cupTotal, 'CUP')}\n${amount(cupTotal, 'CUP')} ÷ ${rate} = −${amount(usdtTotal, 'USDT')}`);
+    const conversions = items.map(x => `${amount(x.inputAmount, 'CUP')} ÷ ${rate} = ${amount(x.balanceAmount, 'USDT')}`);
+    sections.push(`Retiros CUP · tasa ${rate}\n${items.map(x => amount(x.inputAmount, 'CUP')).join(' + ')} = ${amount(cupTotal, 'CUP')}\n${conversions.join('\n')}\nTotal convertido: −${amount(usdtTotal, 'USDT')}`);
   });
   const direct = report.included.filter(x => x.kind === 'withdrawal_direct');
   if (direct.length) {
