@@ -1,0 +1,6 @@
+node_modules/
+.expo/
+.test-dist/
+dist/
+*.log
+.expo-diagnostic/
