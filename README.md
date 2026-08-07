@@ -43,8 +43,8 @@ Ejecuta la comprobación de tipos, las pruebas de cálculo contable y la validac
 Requiere una sesión iniciada en EAS:
 
 ```powershell
-eas.cmd login
-eas.cmd project:info --non-interactive
+npx.cmd eas-cli login
+npx.cmd eas-cli project:info --non-interactive
 npm.cmd run build:apk -- --non-interactive
 ```
 
